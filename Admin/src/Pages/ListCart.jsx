@@ -27,7 +27,7 @@ const ListCart = ({ theme, setTheme }) => {
     setIsLoading(true);
     const response = await axios.post(
       `http://localhost:4000/api/product/remove`,
-      { id: productId }
+      { id: productId },
     );
     await fetchList();
     if (response.data.succes) {
@@ -45,15 +45,15 @@ const ListCart = ({ theme, setTheme }) => {
 
   return (
     <>
-      <div className="flex flex-col w-full  ">
+      <div className="flex w-full flex-col bg-background">
         <Navbar theme={theme} setTheme={setTheme} />
-        <div className=" flex justify-center items-center my-8">
-          <label className="relative block ">
+        <div className="my-8 flex items-center justify-center">
+          <label className="relative block">
             <span className="absolute inset-y-0 left-0 flex items-center pl-5">
-              <IoMdSearch size={20} className="fill-slate-300" />
+              <IoMdSearch size={20} className="fill-white" />
             </span>
             <input
-              className="placeholder:text-slate-400 block bg-white border border-slate-300 rounded-full py-2 pl-12 shadow-sm  "
+              className="block rounded-full bg-secondary py-2 pl-12 text-white shadow-sm placeholder:text-white"
               placeholder="Search"
               type="text"
               name="src"
@@ -65,7 +65,7 @@ const ListCart = ({ theme, setTheme }) => {
           </label>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 justify-items-center rounded-md justify-between gap-y-2 md:pl-5 ">
+        <div className="grid grid-cols-1 justify-between justify-items-center gap-y-2 rounded-md md:grid-cols-3 md:pl-5 lg:grid-cols-5">
           {list
             .filter((updateproducts) => {
               if (search == "") {
@@ -79,21 +79,21 @@ const ListCart = ({ theme, setTheme }) => {
             .map((updateproducts) => (
               <div
                 key={updateproducts.id}
-                className="w-[175px] h-[300px] bg-latergator rounded-md"
+                className="h-[300px] w-[175px] rounded-md bg-secondary"
               >
-                <div className="w-full h-[175px] relative  bg-lightgrey ">
+                <div className="relative h-[175px] w-full bg-lightgrey">
                   <img
                     src={updateproducts.imageFile}
-                    className=" object-center object-cover rounded-t-md w-full h-full "
+                    className="h-full w-full object-cover object-center"
                     placeholder="blur"
                   />
                   {updateproducts.newCollection ? (
-                    <p className="text-white absolute top-1 left-1 flex justify-center items-center py-0.5 px-0.5 bg-black text-xs">
+                    <p className="absolute left-1 top-1 flex items-center justify-center bg-black px-0.5 py-0.5 text-xs text-white">
                       NEW
                     </p>
                   ) : null}
                   <button
-                    className="absolute top-1 right-1 flex justify-center items-center w-7 h-7 rounded-full bg-transparent hover:bg-latergator cursor-pointer dark:hover:bg-black "
+                    className="absolute right-1 top-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-latergator dark:hover:bg-black"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -107,14 +107,14 @@ const ListCart = ({ theme, setTheme }) => {
                     ) : (
                       <FaTrash
                         onClick={() => removeProduct(updateproducts._id)}
-                        className="dark:text-latergator text-sm transition-all duration-300"
+                        className="text-sm transition-all duration-300 dark:text-latergator"
                       />
                     )}
                   </button>
                 </div>
                 <div className="flex flex-col gap-y-2 pt-2 text-center dark:text-white">
                   <p>{updateproducts.name}</p>
-                  <p className="tracking-tight truncate">
+                  <p className="truncate tracking-tight">
                     {updateproducts.description}
                   </p>
                   <p> ${updateproducts.price}</p>

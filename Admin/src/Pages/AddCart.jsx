@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import LoadingBlack from "../assets/loadingblack.svg";
 import classNames from "classnames";
+import DownloadIcon from "../Icons/DownloadIcon";
 
 const AddCart = () => {
   const url = "http://localhost:4000";
@@ -81,7 +82,7 @@ const AddCart = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      }
+      },
     );
     if (response.data.success) {
       setData({
@@ -114,30 +115,32 @@ const AddCart = () => {
 
   return (
     <>
-      <div className="flex flex-col w-full ">
+      <div className="flex w-full flex-col bg-background">
         <div>
           <Navbar />
         </div>
-        <div className=" w-full py-10  pl-2 md:pl-10 ">
+        <div className="w-full py-10 pl-2 md:pl-10">
           <form onSubmit={onSubmitHandler} className="flex flex-col gap-y-5">
-            <h1 className="text-xl md:text-3xl ">Product Information</h1>
+            <h1 className="text-xl text-white md:text-3xl">
+              Product Information
+            </h1>
             <div>
-              <p className=" py-2">Product Name</p>
+              <p className="py-2 text-white">Product Name</p>
               <input
                 onChange={onChangeHandler}
                 value={data.name}
                 type="text"
                 name="name"
                 placeholder="Type here..."
-                className="ring-1 w-72 ring-slate-900/10 py-1 px-3 outline-none "
+                className="w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none"
               />
             </div>
             <div>
-              <p className=" py-2">Product Description</p>
+              <p className="py-2 text-white">Product Description</p>
               <textarea
                 onChange={onChangeHandler}
                 value={data.description}
-                className="ring-1 w-60 md:w-96 ring-slate-900/10 py-1 px-3 outline-none"
+                className="w-60 rounded-2xl bg-secondary px-3 py-2 outline-none md:w-96"
                 type="text"
                 name="description"
                 rows={"6"}
@@ -146,11 +149,11 @@ const AddCart = () => {
               />
             </div>
             <div>
-              <p className=" py-2">Product Features</p>
+              <p className="py-2 text-white">Product Features</p>
               <textarea
                 onChange={onChangeHandler}
                 value={data.features}
-                className="ring-1 w-60 md:w-96 ring-slate-900/10 py-1 px-3 outline-none"
+                className="w-60 rounded-2xl bg-secondary px-3 py-2 outline-none md:w-96"
                 type="text"
                 name="features"
                 rows={"6"}
@@ -159,71 +162,72 @@ const AddCart = () => {
               />
             </div>
             <div>
-              <p className="py-2">Product Brand</p>
+              <p className="py-2 text-white">Product Brand</p>
               <input
                 onChange={onChangeHandler}
                 value={data.brand}
                 type="text"
                 name="brand"
                 placeholder="Type Brand Name Here"
-                className="ring-1 w-72 ring-slate-900/10 py-1 px-3 outline-none"
+                className="w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none"
               />
             </div>
             <div>
-              <p className="py-2">Product Color</p>
+              <p className="py-2 text-white">Product Color</p>
               <input
                 onChange={onChangeHandler}
                 value={data.color}
                 type="text"
                 name="color"
                 placeholder="Type Brand Name Here"
-                className="ring-1 w-72 ring-slate-900/10 py-1 px-3 outline-none"
+                className="w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none"
               />
             </div>
-            <div className="flex flex-row gap-3 items-center">
-              <p className=" py-2">Product In Stock</p>
+            <div className="flex flex-row items-center gap-3">
+              <p className="py-2 text-white">Product In Stock</p>
 
               <div
                 onClick={onToggleSwitch}
                 className={classNames(
-                  "flex w-10 h-5 bg-gray-600 m-5 rounded-full transition-all duration-500",
-                  { "bg-green-500": isSelected }
+                  "m-5 flex h-5 w-10 rounded-full bg-gray-600 transition-all duration-500",
+                  { "bg-green-500": isSelected },
                 )}
               >
                 <span
                   className={classNames(
-                    "h-5 w-5  rounded-full transition-all duration-500",
+                    "h-5 w-5 rounded-full bg-white transition-all duration-500",
                     {
                       "ml-5": isSelected,
-                    }
+                    },
                   )}
                 ></span>
               </div>
             </div>
-            <div className="flex flex-row gap-3 items-center">
-              <p className=" py-2">New Collection</p>
+            <div className="flex flex-row items-center gap-3">
+              <p className="py-2 text-white">New Collection</p>
 
               <div
                 onClick={onToggleSwitchNewCollection}
                 className={classNames(
-                  "flex w-10 h-5 bg-gray-600 m-5 rounded-full transition-all duration-500",
-                  { "bg-green-500": isNewCollection }
+                  "m-5 flex h-5 w-10 rounded-full bg-gray-600 transition-all duration-500",
+                  { "bg-green-500": isNewCollection },
                 )}
               >
                 <span
                   className={classNames(
-                    "h-5 w-5 bg-white rounded-full transition-all duration-500",
+                    "h-5 w-5 rounded-full bg-white transition-all duration-500",
                     {
                       "ml-5": isNewCollection,
-                    }
+                    },
                   )}
                 ></span>
               </div>
             </div>
-            <div className="w-40 ">
-              <p className=" py-3">Product Image</p>
+            <div className="w-40">
+              <p className="py-3 text-white">Product Image</p>
               <label htmlFor="imageFile">
-                <img src={imageUrl} alt="" className="h-20" />
+                <DownloadIcon />
+                {/* <img src={imageUrl} alt="" className="h-20" /> */}
               </label>
               <input
                 onChange={onImageChange}
@@ -233,14 +237,14 @@ const AddCart = () => {
                 required
               />
             </div>
-            <div className="flex flex-col md:flex-row gap-x-5 ">
+            <div className="flex flex-col gap-x-5 md:flex-row">
               <div>
-                <p className=" py-2">Product Category</p>
+                <p className="py-2 text-white">Product Category</p>
                 <select
                   onChange={onChangeHandler}
                   value={data.category}
                   name="category"
-                  className="ring-1 w-40 ring-slate-900/10 py-1 px-3 outline-none"
+                  className="w-40 rounded-full bg-secondary px-3 py-1 text-white outline-none"
                 >
                   <option value="Luxury Watches">Luxury Watches</option>
                   <option value="Sport Watches">Sports Watches</option>
@@ -250,31 +254,31 @@ const AddCart = () => {
                 </select>
               </div>
               <div>
-                <p className="py-2">Product Price </p>
+                <p className="py-2 text-white">Product Price </p>
                 <input
                   onChange={onChangeHandler}
                   value={data.price}
                   type="number"
                   placeholder="$20"
                   name="price"
-                  className="ring-1 w-40 ring-slate-900/10 py-1 px-3 outline-none"
+                  className="w-40 bg-secondary px-3 py-1 outline-none"
                 />
               </div>
             </div>
             <div>
               <button
                 type="submit"
-                className="px-7 py-3 bg-latergator dark:text-white rounded-l-full rounded-r-full"
+                className="rounded-l-full rounded-r-full bg-latergator px-7 py-3 dark:text-white"
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <div className="flex items-center gap-x-3 ">
+                  <div className="flex items-center gap-x-3">
                     <img src={LoadingBlack} className="h-6 w-6" />
 
                     <p className="">Processing...</p>
                   </div>
                 ) : (
-                  <div className="flex gap-x-3 items-center">
+                  <div className="flex items-center gap-x-3">
                     <FaPlus />
                     <p className="">Add Product</p>
                   </div>

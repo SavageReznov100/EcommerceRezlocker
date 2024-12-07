@@ -7,6 +7,10 @@ export default {
         manrope: ["Manrope", "sans-serif"],
       },
       colors: {
+        background: "#1E1E1E",
+        primary: "#2E8B57",
+        accent: "#8FBC8F",
+        white: "#FFFFFF",
         moonmist: "#DADDD0",
         blueribbon: "#364CE4",
         explosivegrey: "#cdcdcd",
@@ -16,7 +20,6 @@ export default {
         raisinblack: "#1E1F23",
         orange: "#D87D4A",
         pink: "#fbaf85",
-        white: "#FFFFFF",
         grey: "#F1F1F1",
         lightgrey: "#FAFAFA",
         fullblack: "#000000",

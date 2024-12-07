@@ -1,7 +1,6 @@
 import { React, useContext, useState } from "react";
-import { BsSunFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FaRegMoon, FaRegUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence, spring } from "framer-motion";
