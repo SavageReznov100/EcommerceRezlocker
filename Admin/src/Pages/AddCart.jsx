@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import LoadingBlack from "../assets/loadingblack.svg";
 import classNames from "classnames";
 import DownloadIcon from "../Icons/DownloadIcon";
+import AttachFileIcon from "../Icons/AttachFileIcon";
 
 const AddCart = () => {
   const url = "http://localhost:4000";
@@ -226,8 +227,7 @@ const AddCart = () => {
             <div className="w-40">
               <p className="py-3 text-white">Product Image</p>
               <label htmlFor="imageFile">
-                <DownloadIcon />
-                {/* <img src={imageUrl} alt="" className="h-20" /> */}
+                <AttachFileIcon />
               </label>
               <input
                 onChange={onImageChange}

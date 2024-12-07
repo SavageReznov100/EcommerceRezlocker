@@ -7,6 +7,7 @@ import { IoMdSearch } from "react-icons/io";
 
 import LoadingGreen from "../assets/loadinggreen.svg";
 import LoadingBlack from "../assets/loadingblack.svg";
+import DeleteIcon from "../Icons/DeleteIcon";
 
 const ListCart = ({ theme, setTheme }) => {
   const [list, setList] = useState([]);
@@ -98,17 +99,17 @@ const ListCart = ({ theme, setTheme }) => {
                   >
                     {isLoading ? (
                       <div>
-                        {theme === "dark" ? (
-                          <img src={LoadingGreen} className="h-4 w-4" />
-                        ) : (
-                          <img src={LoadingBlack} className="h-4 w-4" />
-                        )}
+                        <img src={LoadingGreen} className="h-4 w-4" />
                       </div>
                     ) : (
-                      <FaTrash
-                        onClick={() => removeProduct(updateproducts._id)}
-                        className="text-sm transition-all duration-300 dark:text-latergator"
-                      />
+                      <div onClick={() => removeProduct(updateproducts._id)}>
+                        <DeleteIcon />
+                      </div>
+
+                      // <FaTrash
+                      //   onClick={() => removeProduct(updateproducts._id)}
+                      //   className="text-sm transition-all duration-300 dark:text-latergator"
+                      // />
                     )}
                   </button>
                 </div>

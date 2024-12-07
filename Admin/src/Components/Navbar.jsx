@@ -1,12 +1,13 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
+import UserIcon from "../Icons/UserIcon";
 
 const Navbar = () => {
   return (
     <>
-      <div className="flex justify-end w-full h-20 items-center px-10 bg-background ">
-        <div className="flex  text-white items-center justify-center gap-7">
-          <FaUser className="text-2xl" />
+      <div className="flex h-20 w-full items-center justify-end bg-background px-10">
+        <div className="flex items-center justify-center gap-7 text-white">
+          <UserIcon />
         </div>
       </div>
     </>
