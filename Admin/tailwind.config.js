@@ -6,6 +6,9 @@ export default {
     extend: {
       fontFamily: {
         manrope: ["Manrope", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+        lora: ["Lora", "serif"],
+        playfair: ["Playfair Display", "serif"],
       },
       colors: {
         background: "#1E1E1E",
@@ -14,17 +17,6 @@ export default {
         white: "#FFFFFF",
         secondary: "#454545",
         tetiary: "#e0e0e0",
-        latergator: "#028B53",
-        alterego: "#69686d",
-        vintage: "#D2B48C",
-        coastal: "#C4FFA5",
-        gramshair: "#F5F6F8",
-        raisinblack: "#1E1F23",
-        white: "#FFFFFF",
-        grey: "#F1F1F1",
-        lightgrey: "#FAFAFA",
-        fullblack: "#000000",
-        black: "#101010",
       },
       screens: {
         sm: "640px",

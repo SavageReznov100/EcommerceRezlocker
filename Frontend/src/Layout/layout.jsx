@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer";
 const Layout = ({ children, theme, setTheme, activeTab, setActiveTab }) => {
   return (

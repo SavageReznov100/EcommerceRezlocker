@@ -31,22 +31,32 @@ export const ProductProvider = ({ children }) => {
       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     }
     if (token) {
-      await axios.post(
+      const response = await axios.post(
         "http://localhost:4000/api/addcart",
         { itemId },
-        { headers: { token } }
+        { headers: { token } },
       );
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
     }
   };
 
   const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (token) {
-      await axios.post(
+      const response = await axios.post(
         "http://localhost:4000/api/deletecart",
         { itemId },
-        { headers: { token } }
+        { headers: { token } },
       );
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
     }
   };
 
@@ -62,7 +72,7 @@ export const ProductProvider = ({ children }) => {
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = products.find(
-          (totalproduct) => totalproduct._id === item
+          (totalproduct) => totalproduct._id === item,
         );
         if (itemInfo) {
           totalAmount += itemInfo.price * cartItems[item];
@@ -77,7 +87,7 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await axios.get(
-        `http://localhost:4000/api/product/list`
+        `http://localhost:4000/api/product/list`,
       );
       if (response.data.success) {
         setProducts(response.data.data);

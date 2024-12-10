@@ -5,12 +5,18 @@ export default {
     extend: {
       fontFamily: {
         manrope: ["Manrope", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+        lora: ["Lora", "serif"],
+        playfair: ["Playfair Display", "serif"],
+        libre: ["Libre Caslon Display", "serif"],
       },
       colors: {
         background: "#1E1E1E",
         primary: "#2E8B57",
         accent: "#8FBC8F",
         white: "#FFFFFF",
+        secondary: "#454545",
+        tetiary: "#e0e0e0",
         moonmist: "#DADDD0",
         blueribbon: "#364CE4",
         explosivegrey: "#cdcdcd",

@@ -13,7 +13,7 @@ const UserOrders = () => {
         {},
         {
           headers: { token },
-        }
+        },
       );
       if (response.data.success) {
         setOrders(response.data.data);
@@ -33,29 +33,42 @@ const UserOrders = () => {
   console.log(orders);
 
   return (
-    <section className="container pt-20">
-      <div>
-        <h4>My Orders</h4>
-
-        <table className="w-full mt-8">
+    <section className="bg-background py-10">
+      <div className="container">
+        <h1 className="flex items-center justify-center font-playfair text-4xl uppercase tracking-widest text-white">
+          My Orders
+        </h1>
+        <table className="mt-8 w-full">
           <thead>
-            <tr className="border-b-black border-r-slate-900/20  regular-14 xs:regular-16 text-start py-12">
-              <th className="p-1 text-left hidden sm:table-cell">Package</th>
-              <th className="p-1 text-left ">Title</th>
-              <th className="p-1 text-left ">Price</th>
-              <th className="p-1 text-left">Quantity</th>
-              <th className="p-1 text-center">Status</th>
-              <th className="p-1 text-left">Track</th>
+            <tr className="border-b-2 border-tetiary text-start text-white">
+              <th className="hidden border-r-2 border-tetiary p-1 text-left font-raleway sm:table-cell">
+                Package
+              </th>
+              <th className="border-r-2 border-tetiary p-1 text-left font-raleway">
+                Title
+              </th>
+              <th className="border-r-2 border-tetiary p-1 text-left font-raleway">
+                Price
+              </th>
+              <th className="font-ralewaytext-left border-r-2 border-tetiary p-1 text-left">
+                Quantity
+              </th>
+              <th className="font-ralewaytext-center border-r-2 border-tetiary p-1 text-left">
+                Status
+              </th>
+              <th className="border-r-2 border-tetiary p-1 text-left font-raleway">
+                Track
+              </th>
             </tr>
           </thead>
           <tbody>
             {orders.map((data, i) => {
               return (
                 <tr key={i}>
-                  <td className=" p-1 hidden sm:table-cell">
-                    <FaBox className="text-2xl text-latergator" />
+                  <td className="border-2 border-tetiary p-6 text-left">
+                    <FaBox className="hidden border-tetiary p-1 text-2xl text-white sm:table-cell" />
                   </td>
-                  <td className="p-1">
+                  <td className="border-2 border-tetiary p-1 font-lora text-white">
                     <p>
                       {data.items.map((item, index) => {
                         if (index === data.items.length - 1) {
@@ -66,19 +79,23 @@ const UserOrders = () => {
                       })}
                     </p>
                   </td>
-                  <td className="p-1">${data.amount}</td>
-                  <td className="p-1 text-center">{data.items.length}</td>
+                  <td className="border-2 border-tetiary p-1 font-lora text-white">
+                    ${data.amount}
+                  </td>
+                  <td className="border-2 border-tetiary p-1 text-center font-lora text-white">
+                    {data.items.length}
+                  </td>
 
-                  <td>
+                  <td className="border-2 border-tetiary p-1 text-center font-lora text-white">
                     <p className="flex items-center justify-center gap-x-2">
                       <span className="hidden lg:flex">&#x25cf;</span>
                       <b>{data.status}</b>
                     </p>
                   </td>
-                  <td className="p-1">
+                  <td className="border-2 border-tetiary p-1 text-center font-lora text-white">
                     <button
                       onClick={fetchOrders}
-                      className="bg-latergator rounded-sm px-5 py-2"
+                      className="rounded-sm bg-latergator px-5 py-2"
                     >
                       Track <span className="hidden lg:flex">Order</span>
                     </button>

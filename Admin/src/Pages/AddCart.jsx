@@ -1,12 +1,11 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Upload from "../assets/uploadfield.svg";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LoadingBlack from "../assets/loadingblack.svg";
+import LoadingGreen from "../assets/loadinggreen.svg";
 import classNames from "classnames";
-import DownloadIcon from "../Icons/DownloadIcon";
 import AttachFileIcon from "../Icons/AttachFileIcon";
 
 const AddCart = () => {
@@ -122,26 +121,24 @@ const AddCart = () => {
         </div>
         <div className="w-full py-10 pl-2 md:pl-10">
           <form onSubmit={onSubmitHandler} className="flex flex-col gap-y-5">
-            <h1 className="text-xl text-white md:text-3xl">
-              Product Information
-            </h1>
+            <h1 className="header">Product Information</h1>
             <div>
-              <p className="py-2 text-white">Product Name</p>
+              <p className="subheader">Product Name</p>
               <input
                 onChange={onChangeHandler}
                 value={data.name}
                 type="text"
                 name="name"
                 placeholder="Type here..."
-                className="w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none"
+                className="productsmall"
               />
             </div>
             <div>
-              <p className="py-2 text-white">Product Description</p>
+              <p className="subheader">Product Description</p>
               <textarea
                 onChange={onChangeHandler}
                 value={data.description}
-                className="w-60 rounded-2xl bg-secondary px-3 py-2 outline-none md:w-96"
+                className="productlarge"
                 type="text"
                 name="description"
                 rows={"6"}
@@ -150,11 +147,11 @@ const AddCart = () => {
               />
             </div>
             <div>
-              <p className="py-2 text-white">Product Features</p>
+              <p className="subheader">Product Features</p>
               <textarea
                 onChange={onChangeHandler}
                 value={data.features}
-                className="w-60 rounded-2xl bg-secondary px-3 py-2 outline-none md:w-96"
+                className="productlarge"
                 type="text"
                 name="features"
                 rows={"6"}
@@ -163,29 +160,29 @@ const AddCart = () => {
               />
             </div>
             <div>
-              <p className="py-2 text-white">Product Brand</p>
+              <p className="subheader">Product Brand</p>
               <input
                 onChange={onChangeHandler}
                 value={data.brand}
                 type="text"
                 name="brand"
                 placeholder="Type Brand Name Here"
-                className="w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none"
+                className="productsmall"
               />
             </div>
             <div>
-              <p className="py-2 text-white">Product Color</p>
+              <p className="subheader">Product Color</p>
               <input
                 onChange={onChangeHandler}
                 value={data.color}
                 type="text"
                 name="color"
                 placeholder="Type Brand Name Here"
-                className="w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none"
+                className="productsmall"
               />
             </div>
             <div className="flex flex-row items-center gap-3">
-              <p className="py-2 text-white">Product In Stock</p>
+              <p className="subheader">Product In Stock</p>
 
               <div
                 onClick={onToggleSwitch}
@@ -205,7 +202,7 @@ const AddCart = () => {
               </div>
             </div>
             <div className="flex flex-row items-center gap-3">
-              <p className="py-2 text-white">New Collection</p>
+              <p className="subheader">New Collection</p>
 
               <div
                 onClick={onToggleSwitchNewCollection}
@@ -225,7 +222,7 @@ const AddCart = () => {
               </div>
             </div>
             <div className="w-40">
-              <p className="py-3 text-white">Product Image</p>
+              <p className="subheader">Product Image</p>
               <label htmlFor="imageFile">
                 <AttachFileIcon />
               </label>
@@ -239,12 +236,12 @@ const AddCart = () => {
             </div>
             <div className="flex flex-col gap-x-5 md:flex-row">
               <div>
-                <p className="py-2 text-white">Product Category</p>
+                <p className="subheader">Product Category</p>
                 <select
                   onChange={onChangeHandler}
                   value={data.category}
                   name="category"
-                  className="w-40 rounded-full bg-secondary px-3 py-1 text-white outline-none"
+                  className="w-40 rounded-full bg-secondary px-3 py-1 font-lora text-white outline-none"
                 >
                   <option value="Luxury Watches">Luxury Watches</option>
                   <option value="Sport Watches">Sports Watches</option>
@@ -254,33 +251,33 @@ const AddCart = () => {
                 </select>
               </div>
               <div>
-                <p className="py-2 text-white">Product Price </p>
+                <p className="subheader">Product Price </p>
                 <input
                   onChange={onChangeHandler}
                   value={data.price}
                   type="number"
                   placeholder="$20"
                   name="price"
-                  className="w-40 bg-secondary px-3 py-1 outline-none"
+                  className="w-40 bg-secondary px-3 py-1 text-white outline-none"
                 />
               </div>
             </div>
             <div>
               <button
                 type="submit"
-                className="rounded-l-full rounded-r-full bg-latergator px-7 py-3 dark:text-white"
+                className="rounded-l-full rounded-r-full bg-primary px-7 py-3"
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <div className="flex items-center gap-x-3">
-                    <img src={LoadingBlack} className="h-6 w-6" />
+                    <img src={LoadingGreen} className="h-6 w-6" />
 
-                    <p className="">Processing...</p>
+                    <p className="font-playfair text-white">Processing...</p>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-x-3">
+                  <div className="flex items-center gap-x-3 text-white">
                     <FaPlus />
-                    <p className="">Add Product</p>
+                    <p className="font-playfair">Add Product</p>
                   </div>
                 )}
               </button>

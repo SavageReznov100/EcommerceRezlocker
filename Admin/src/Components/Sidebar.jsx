@@ -26,7 +26,7 @@ const Sidebar = () => {
         >
           <div className="hidden lg:block">
             <div
-              className="absolute -right-5 top-7 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-latergator"
+              className="absolute -right-5 top-7 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary"
               onClick={() => setToggle(!toggle)}
             >
               <BiChevronLeft
@@ -61,7 +61,7 @@ const Sidebar = () => {
                     )}
                     <sidebar.icon className="relative z-10 float-left block text-base text-white" />
                     <p
-                      className={`relative z-10 flex-1 text-base font-medium text-white transition-all duration-300 ${
+                      className={`relative z-10 flex-1 font-playfair text-base font-medium text-white transition-all duration-300 ${
                         toggle && "hidden"
                       }`}
                     >

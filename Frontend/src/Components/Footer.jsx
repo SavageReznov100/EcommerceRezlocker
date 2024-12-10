@@ -9,11 +9,12 @@ const Footer = ({ activeTab, setActiveTab }) => {
     { id: 3, name: "Product", link: "/product" },
   ];
   return (
-    <div className="">
-      <div className="grid grid-cols-1 lg:grid-cols-3 container  py-8">
+    <div className="bg-background">
+      <hr className="w-full border border-tetiary"></hr>
+      <div className="container grid grid-cols-1 py-8 lg:grid-cols-3">
         <div>Logo</div>
-        <div className="flex flex-row justify-evenly lg:justify-center pb-4 gap-10">
-          <h1>
+        <div className="flex flex-row justify-evenly gap-10 pb-4 font-raleway text-xl font-semibold text-tetiary lg:justify-center">
+          <h1 className="hover:text-white">
             <NavLink
               to="/newcollection"
               onClick={() => setActiveTab(navbar[1].id)}
@@ -21,23 +22,23 @@ const Footer = ({ activeTab, setActiveTab }) => {
               New Collection
             </NavLink>
           </h1>
-          <h1>
+          <h1 className="hover:text-white">
             <NavLink to="/product" onClick={() => setActiveTab(navbar[2].id)}>
               Products
             </NavLink>
           </h1>
-          <h1>
+          <h1 className="hover:text-white">
             <NavLink>About Us</NavLink>
           </h1>
         </div>
-        <div className="flex flex-row lg:flex-col lg:items-center justify-between lg:justify-center lg:gap-y-10">
+        <div className="flex flex-row justify-between font-raleway font-semibold text-tetiary lg:flex-col lg:items-center lg:justify-center lg:gap-y-10">
           <div>
-            <h1>Our Information</h1>
+            <h1 className="text-2xl">Our Information</h1>
             <p>1-3 Guantamala Str</p>
             <p>Cavnero</p>
           </div>
 
-          <div className="flex flex-row gap-5 text-2xl">
+          <div className="flex flex-row gap-5 text-2xl text-white">
             <FaFacebook />
             <FaTwitter />
             <FaInstagram />

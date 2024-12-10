@@ -38,28 +38,18 @@ const Order = ({}) => {
   };
   return (
     <>
-      <div className="flex flex-col w-full bg-background">
+      <div className="flex w-full flex-col bg-background">
         <Navbar />
-        <h4 className="uppercase text-white">Order Page</h4>
-        <div className="overflow-auto mt-5">
+        <h4 className="header flex justify-center">Order Page</h4>
+        <div className="mt-5 overflow-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b-2  border-tetiary text-start text-white">
-                <th className="p-1 text-left border-r-2 border-tetiary  hidden sm:flex">
-                  Package
-                </th>
-                <th className="p-1 text-left border-r-2 border-tetiary ">
-                  Order
-                </th>
-                <th className="p-1 text-left border-r-2 border-tetiary ">
-                  Items
-                </th>
-                <th className="p-1 text-left border-r-2 border-tetiary  ">
-                  Price
-                </th>
-                <th className="p-1 text-left border-r-2 border-tetiary  ">
-                  Status
-                </th>
+              <tr className="table_container">
+                <th className="table_horizontal hidden sm:flex">Package</th>
+                <th className="table_horizontal">Order</th>
+                <th className="table_horizontal">Items</th>
+                <th className="table_horizontal">Price</th>
+                <th className="table_horizontal">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -69,11 +59,11 @@ const Order = ({}) => {
                     key={i}
                     className="border-b-2 border-tetiary p-6 text-left"
                   >
-                    <td className="p-1 border-r-2 hidden  border-tetiary  text-white sm:table-cell">
+                    <td className="hidden border-r-2 border-tetiary p-1 text-white sm:table-cell">
                       <FaBox />
                     </td>
-                    <td className="p-1  border-r-2 border-tetiary ">
-                      <div className="p-2 text-white">
+                    <td className="table_content border-r-2">
+                      <div className="p-2">
                         <p>
                           {data.items.map((item, index) => {
                             if (index === data.items.length - 1) {
@@ -85,7 +75,7 @@ const Order = ({}) => {
                         </p>
                       </div>
                       <hr className="w-full" />
-                      <div className="text-white">
+                      <div className=" ">
                         <h5>{data.name}</h5>
                         <div>
                           <p>
@@ -101,18 +91,16 @@ const Order = ({}) => {
                         <p>{data.number}</p>
                       </div>
                     </td>
-                    <td className="p-1 text-white  border-r-2 border-tetiary ">
+                    <td className="table_content border-r-2">
                       {data.items.length}
                     </td>
-                    <td className="p-1 text-white border-r-2 border-tetiary  ">
-                      ${data.amount}
-                    </td>
-                    <td className="p-1  border-r-2 border-tetiary ">
+                    <td className="table_content border-r-2">${data.amount}</td>
+                    <td className="table_content border-r-2">
                       <select
                         onChange={(event) => onChangeHandler(event, data._id)}
                         value={data.status}
                         name="status"
-                        className="bg-primary text-white p-1 text-sm max-w-20 xl:max-w-32 rounded-full"
+                        className="max-w-20 rounded-full bg-primary p-1 font-playfair text-sm text-white xl:max-w-32"
                       >
                         <option value="Product Loading">Product Loading</option>
                         <option value="Out for Delivery">

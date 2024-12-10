@@ -1,3 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Add Cart*/
+.header {
+  @apply font-raleway text-xl text-white md:text-3xl;
+}
+.subheader {
+  @apply font-lora py-2 text-white;
+}
+.productsmall {
+  @apply w-72 rounded-full bg-secondary px-3 py-1 text-white outline-none;
+}
+.productlarge {
+  @apply w-60 rounded-2xl bg-secondary px-3 py-2 outline-none md:w-96;
+}
+
+/*Order*/
+.table_container {
+  @apply border-b-2 border-tetiary text-start text-white;
+}
+.table_horizontal {
+  @apply font-raleway border-r-2 border-tetiary p-1 text-left;
+}
+.table_content {
+  @apply font-lora border-tetiary p-1 text-white;
+}

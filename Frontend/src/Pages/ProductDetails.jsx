@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-import Tabs from "../Components/Tabs";
+import Tabs from "../Components/Product/Tabs";
 
 const ProductDetails = () => {
   const transition = { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.9] };
@@ -34,17 +34,17 @@ const ProductDetails = () => {
   return (
     <div>
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 ">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, height: "0px", width: "0px" }}
             animate={{ opacity: 1, height: "100%", width: "100%" }}
             transition={transition}
-            className="col-span-2 flex justify-center "
+            className="col-span-2 flex justify-center"
           >
-            <div className="max-w-[535px] max-h-[535px] aspect-square">
+            <div className="aspect-square max-h-[535px] max-w-[535px]">
               <img
                 src={imageFile}
-                className="w-full h-full object-cover origin-center"
+                className="h-full w-full origin-center object-cover"
               />
             </div>
           </motion.div>
@@ -53,12 +53,12 @@ const ProductDetails = () => {
               <p className="text-2xl">{brand}</p>
             </div>
             <div className="flex flex-col gap-3">
-              <p className="text-4xl ">{name}</p>
+              <p className="text-4xl">{name}</p>
               <p className="text-2xl">${price}</p>
               <p>incl. local Tax & Shipping.</p>
             </div>
             <div className="flex flex-col gap-3">
-              <p className=" line-clamp-3">{description}</p>
+              <p className="line-clamp-3">{description}</p>
               <p>Color : {color}</p>
               {inStock ? (
                 <p className="text-green-500">In Stock</p>
@@ -72,21 +72,21 @@ const ProductDetails = () => {
                   <div>
                     <button
                       onClick={() => addToCart(_id)}
-                      className="py-2 px-16 bg-black rounded-full text-white hover:bg-latergator transition-all duration-700"
+                      className="rounded-full bg-black px-16 py-2 text-white transition-all duration-700 hover:bg-latergator"
                     >
                       Add to Cart
                     </button>
                   </div>
                 ) : (
-                  <div className="bg-white rounded-full flex items-center  gap-2 h-10">
+                  <div className="flex h-10 items-center gap-2 rounded-full bg-white">
                     <FaMinus
                       onClick={() => removeFromCart(_id)}
-                      className="rounded-full bg-white h-6 w-6 p-1 ml-1 cursor-pointer"
+                      className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-white p-1"
                     />
                     <p>{cartItems[_id]}</p>
                     <FaPlus
                       onClick={() => addToCart(_id)}
-                      className="rounded-full bg-latergator h-6 w-6 p-1 mr-1 cursor-pointer"
+                      className="mr-1 h-6 w-6 cursor-pointer rounded-full bg-latergator p-1"
                     />
                   </div>
                 )}

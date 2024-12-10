@@ -2,12 +2,10 @@ import { React, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { FaTrash } from "react-icons/fa";
-import { IoMdSearch } from "react-icons/io";
 
 import LoadingGreen from "../assets/loadinggreen.svg";
-import LoadingBlack from "../assets/loadingblack.svg";
 import DeleteIcon from "../Icons/DeleteIcon";
+import SearchIcon from "../Icons/SearchIcon";
 
 const ListCart = ({ theme, setTheme }) => {
   const [list, setList] = useState([]);
@@ -50,11 +48,11 @@ const ListCart = ({ theme, setTheme }) => {
         <Navbar theme={theme} setTheme={setTheme} />
         <div className="my-8 flex items-center justify-center">
           <label className="relative block">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-5">
-              <IoMdSearch size={20} className="fill-white" />
+            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+              <SearchIcon />
             </span>
             <input
-              className="block rounded-full bg-secondary py-2 pl-12 text-white shadow-sm placeholder:text-white"
+              className="block rounded-full bg-secondary py-2 pl-12 font-raleway text-white shadow-sm placeholder:text-white"
               placeholder="Search"
               type="text"
               name="src"
@@ -94,7 +92,7 @@ const ListCart = ({ theme, setTheme }) => {
                     </p>
                   ) : null}
                   <button
-                    className="absolute right-1 top-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-latergator dark:hover:bg-black"
+                    className="absolute right-1 top-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-primary dark:hover:bg-black"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -105,18 +103,13 @@ const ListCart = ({ theme, setTheme }) => {
                       <div onClick={() => removeProduct(updateproducts._id)}>
                         <DeleteIcon />
                       </div>
-
-                      // <FaTrash
-                      //   onClick={() => removeProduct(updateproducts._id)}
-                      //   className="text-sm transition-all duration-300 dark:text-latergator"
-                      // />
                     )}
                   </button>
                 </div>
-                <div className="flex flex-col gap-y-2 pt-2 text-center dark:text-white">
+                <div className="flex flex-col gap-y-2 pt-2 text-center font-lora text-white">
                   <p>{updateproducts.name}</p>
                   <p className="truncate tracking-tight">
-                    {updateproducts.description}
+                    {updateproducts.category}
                   </p>
                   <p> ${updateproducts.price}</p>
                 </div>
