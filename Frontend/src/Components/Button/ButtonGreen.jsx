@@ -7,7 +7,7 @@ const ButtonGreen = ({
   Font,
   Padding_X,
   Padding_Y,
-  isLoading,
+  isLoading = false,
 }) => {
   return (
     <>

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 const Footer = ({ activeTab, setActiveTab }) => {
   const navbar = [
@@ -12,7 +13,9 @@ const Footer = ({ activeTab, setActiveTab }) => {
     <div className="bg-background">
       <hr className="w-full border border-tetiary"></hr>
       <div className="container grid grid-cols-1 py-8 lg:grid-cols-3">
-        <div>Logo</div>
+        <div>
+          <img className="h-20 w-20 lg:h-40 lg:w-40" src={Logo} />
+        </div>
         <div className="flex flex-row justify-evenly gap-10 pb-4 font-raleway text-xl font-semibold text-tetiary lg:justify-center">
           <h1 className="hover:text-white">
             <NavLink

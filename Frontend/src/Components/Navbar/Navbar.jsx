@@ -7,6 +7,7 @@ import { ProductContext } from "../../Context/ProductContext";
 import MobileMenu from "./MobileMenu";
 import UserIcon from "../../assets/Icons/UserIcon";
 import CartIcon from "../../assets/Icons/CartIcon";
+import Logo from "../../assets/logo.png";
 
 const Navbar = ({ activeTab, setActiveTab }) => {
   const { getTotalCartAmount } = useContext(ProductContext);
@@ -30,13 +31,12 @@ const Navbar = ({ activeTab, setActiveTab }) => {
 
   return (
     <>
-      {isMenuOpen && <MobileMenu toggleMenu={toggleMenu} />}
-
+      <MobileMenu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       <div className="bg-background">
         <div className="container">
           <div className="relative flex h-20 w-full items-center justify-between">
             <div>
-              <p className="">LOGO</p>
+              <img className="h-20 w-20" src={Logo} />
             </div>
 
             <div className="hidden gap-x-5 md:flex">
@@ -60,7 +60,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
               ))}
             </div>
 
-            <div className="flex gap-x-5 text-base">
+            <div className="flex items-center justify-between gap-x-5 text-base">
               <div
                 className="relative"
                 onClick={() => setIsProfileOpen(true)}
@@ -94,7 +94,8 @@ const Navbar = ({ activeTab, setActiveTab }) => {
               </div>
 
               <RxHamburgerMenu
-                className="block hover:text-blueribbon md:hidden"
+                size={20}
+                className="block text-white hover:text-primary md:hidden"
                 onClick={toggleMenu}
               />
             </div>

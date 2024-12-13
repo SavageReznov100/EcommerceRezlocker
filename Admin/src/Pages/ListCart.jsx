@@ -80,7 +80,7 @@ const ListCart = ({ theme, setTheme }) => {
                 key={updateproducts.id}
                 className="h-[300px] w-[175px] rounded-md bg-secondary"
               >
-                <div className="relative h-[175px] w-full bg-lightgrey">
+                <div className="relative h-[175px] w-full bg-tetiary">
                   <img
                     src={updateproducts.imageFile}
                     className="h-full w-full object-cover object-center"
@@ -92,7 +92,7 @@ const ListCart = ({ theme, setTheme }) => {
                     </p>
                   ) : null}
                   <button
-                    className="absolute right-1 top-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-primary dark:hover:bg-black"
+                    className="absolute right-1 top-1 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-primary"
                     disabled={isLoading}
                   >
                     {isLoading ? (

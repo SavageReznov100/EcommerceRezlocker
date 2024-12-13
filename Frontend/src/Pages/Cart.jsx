@@ -1,37 +1,40 @@
 import { React, useContext } from "react";
 import { ProductContext } from "../Context/ProductContext";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
-
 import { Link } from "react-router-dom";
+import ButtonGreen from "../Components/Button/ButtonGreen";
 
 const Cart = () => {
-  const { cartItems, products, removeFromCart, addToCart, getTotalCartAmount } =
-    useContext(ProductContext);
+  const {
+    cartItems,
+    item,
+    products,
+    removeFromCart,
+    addToCart,
+    getTotalCartAmount,
+  } = useContext(ProductContext);
   return (
-    <>
-      <div className="md:container">
-        <h1 className="my-10 text-5xl ">CART</h1>
-
-        <div className="w-full bg-explosivegrey grid grid-cols-1 md:grid-cols-3">
-          <div className="w-full bg-gray-500 col-span-2">
+    <div className="bg-background">
+      <div className="container">
+        <h1 className="flex items-center justify-center py-10 pt-8 font-raleway text-4xl uppercase tracking-widest text-white">
+          CART
+        </h1>
+        <div className="grid w-full grid-cols-1 bg-tetiary md:grid-cols-3">
+          <div className="col-span-2 w-full bg-secondary">
             {products.map((product) => {
               if (cartItems[product._id] > 0) {
                 return (
                   <>
-                    <div
-                      key={product._id}
-                      className=" relative flex py-6 ml-10"
-                    >
-                      <div className="w-[120px] h-[120px] rounded-xl overflow-hidden bg-lightgrey relative">
+                    <div key={product._id} className="relative ml-10 flex py-6">
+                      <div className="relative h-[120px] w-[120px] overflow-hidden rounded-xl bg-lightgrey">
                         <img
                           src={product.imageFile}
                           alt="productImg"
-                          className="w-full h-full object-cover rounded-xl"
+                          className="h-full w-full rounded-xl object-cover"
                         />
                       </div>
                       <div className="flex flex-col justify-between px-5">
-                        <div className="flex flex-col gap-1.5">
+                        <div className="flex flex-col gap-1.5 font-lora text-white">
                           <div className="flex gap-3 md:gap-20">
                             <p>{product.name}</p>
                             <p>$ {product.price * cartItems[product._id]}</p>
@@ -39,40 +42,36 @@ const Cart = () => {
 
                           <p>{product.category}</p>
                         </div>
-                        <div className="bg-white rounded-full flex items-center justify-between gap-2 h-8 w-24">
+                        <div className="flex h-10 w-32 items-center justify-between gap-2 rounded-full bg-secondary">
                           <FaMinus
                             onClick={() => removeFromCart(product._id)}
-                            className="rounded-full bg-white h-4 w-4 p-1 ml-1 cursor-pointer"
+                            className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-red-500 p-1 text-white"
                           />
-                          <p>{cartItems[product._id]}</p>
+                          <p className="font-libre text-white">
+                            {cartItems[product._id]}
+                          </p>
                           <FaPlus
                             onClick={() => addToCart(product._id)}
-                            className="rounded-full bg-latergator h-4 w-4 p-1 mr-1 cursor-pointer"
+                            className="mr-1 h-6 w-6 cursor-pointer rounded-full bg-green-500 p-1 text-white"
                           />
                         </div>
                       </div>
-                      {/* <div
-                        className="absolute top-6 text-xl right-10"
-                        onClick={() => removeFromCart(product._id)}
-                      >
-                        <IoClose />
-                      </div> */}
                     </div>
-                    <hr class="border-black border "></hr>
+                    <hr class="border border-black" />
                   </>
                 );
               }
             })}
-            <p className="py-6 ml-10">
+            <p className="ml-10 py-6 font-playfair text-2xl text-white md:text-4xl">
               Does your cart feel empty ?
               <Link to="/product">
-                <span> Shop More</span>
+                <span className="text-primary"> Shop More</span>
               </Link>
             </p>
           </div>
-          <div className="py-5 px-10 h-60 ">
-            <h1 className="text-2xl">Summary</h1>
-            <div className="flex flex-col pt-4 gap-y-1 ">
+          <div className="h-60 min-h-[300px] px-10 py-5 font-lora text-xl">
+            <h1 className="text-3xl">Summary</h1>
+            <div className="flex flex-col gap-y-3 pt-4">
               <div className="flex justify-between">
                 <p>Subtotal :</p>
                 <p>$ {getTotalCartAmount()}</p>
@@ -89,17 +88,21 @@ const Cart = () => {
                 $ {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
               </p>
             </div>
-            <div className="flex justify-center mt-5">
+            <div className="mt-5 flex justify-center">
               <Link to="/order">
-                <button className="py-2 px-8 rounded-full text-white bg-latergator transition-all duration-700">
-                  Proceed To Checkout
-                </button>
+                <ButtonGreen
+                  Text_Color={"white"}
+                  Font={"raleway"}
+                  Padding_Y={"16px"}
+                  Padding_X={"32px"}
+                  Text={"Proceed to Checkout"}
+                />
               </Link>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

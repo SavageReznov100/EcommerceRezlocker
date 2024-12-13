@@ -4,7 +4,7 @@ import Upload from "../assets/uploadfield.svg";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LoadingGreen from "../assets/loadinggreen.svg";
+import LoadingWhite from "../assets/loadingwhite.svg";
 import classNames from "classnames";
 import AttachFileIcon from "../Icons/AttachFileIcon";
 
@@ -102,7 +102,6 @@ const AddCart = () => {
       setImageUrl(Upload);
       toast.success(response.data.message);
     } else {
-      console.error("Submission failed");
       toast.error(response.data.message);
       setIsLoading(false);
     }
@@ -111,8 +110,6 @@ const AddCart = () => {
       console.log("Error in Submitting Form", error);
     }
   };
-  console.log(isLoading);
-
   return (
     <>
       <div className="flex w-full flex-col bg-background">
@@ -270,7 +267,7 @@ const AddCart = () => {
               >
                 {isLoading ? (
                   <div className="flex items-center gap-x-3">
-                    <img src={LoadingGreen} className="h-6 w-6" />
+                    <img src={LoadingWhite} className="h-6 w-6" />
 
                     <p className="font-playfair text-white">Processing...</p>
                   </div>

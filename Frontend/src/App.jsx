@@ -43,6 +43,14 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/order" element={<Order />} />
               <Route path="/verify" element={<Verify />} />
+              <Route
+                path="/myorders"
+                element={
+                  <Layout activeTab={activeTab} setActiveTab={setActiveTab}>
+                    <UserOrders />
+                  </Layout>
+                }
+              />
             </Route>
             <Route
               path="/"
@@ -81,14 +89,6 @@ function App() {
               element={
                 <Layout activeTab={activeTab} setActiveTab={setActiveTab}>
                   <Cart />
-                </Layout>
-              }
-            />
-            <Route
-              path="/myorders"
-              element={
-                <Layout activeTab={activeTab} setActiveTab={setActiveTab}>
-                  <UserOrders />
                 </Layout>
               }
             />

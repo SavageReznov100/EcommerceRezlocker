@@ -43,9 +43,9 @@ const Shoppage = ({ updateproducts }) => {
               <p className="font-raleway text-lg text-white">{name}</p>
               <p className="font-raleway text-white">${price}</p>
               {inStock ? (
-                <p className="font- text-green-500">In Stock</p>
+                <p className="font-raleway text-green-500">In Stock</p>
               ) : (
-                <p className="font- text-rose-500">Not In Stock</p>
+                <p className="font-raleway text-rose-500">Not In Stock</p>
               )}
             </div>
             {inStock && (
@@ -61,17 +61,7 @@ const Shoppage = ({ updateproducts }) => {
                     />
                   </div>
                 ) : (
-                  // <div>
-                  //   <button
-                  //     onClick={() => addToCart(_id)}
-                  //     className="flex items-center gap-1 rounded-full bg-white px-3 py-2 transition-all duration-700 hover:bg-latergator"
-                  //     onMouseEnter={onHover}
-                  //     onMouseLeave={onHover}
-                  //   >
-                  //     Add to Cart
-                  //   </button>
-                  // </div>
-                  <div className="flex h-10 items-center justify-between gap-2 rounded-full bg-secondary">
+                  <div className="flex h-10 items-center justify-between gap-2 rounded-full bg-secondary md:w-24 lg:w-32">
                     <FaMinus
                       onClick={() => removeFromCart(_id)}
                       className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-red-500 p-1 text-white"

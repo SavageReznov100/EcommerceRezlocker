@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { motion, spring } from "framer-motion";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { BiChevronLeft } from "react-icons/bi";
 import { GiWatch } from "react-icons/gi";
 import { FaList, FaBorderAll } from "react-icons/fa";
+import Logo from "../assets/logo.png";
 
 const Sidebar = () => {
   const sidebar = [
@@ -37,8 +38,8 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="inline-flex w-60">
-            <GiWatch className="float-none mr-2 block cursor-pointer text-4xl" />
+          <div className="flex justify-center">
+            <img className="h-20 w-20" src={Logo} />
           </div>
           <div>
             <div className="flex flex-col gap-y-4 pt-10">
@@ -46,7 +47,7 @@ const Sidebar = () => {
                 <NavLink key={sidebar.id} to={sidebar.link}>
                   <div
                     onClick={() => setActiveTab(sidebar.id)}
-                    className={`toggle ? "w-14" : "w-36 pl-2" } relative mt-2 flex h-14 cursor-pointer items-center justify-center gap-x-4 rounded-r-full`}
+                    className={`relative mt-2 flex h-14 cursor-pointer items-center justify-center gap-x-4 rounded-r-full`}
                   >
                     {activeTab === sidebar.id && (
                       <motion.div

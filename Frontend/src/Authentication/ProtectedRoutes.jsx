@@ -7,7 +7,6 @@ const ProtectedRoutes = () => {
 
   if (token === null) {
     toast.info("Sign In");
-
     return <Navigate to="/" />;
   } else {
     return <Outlet />;

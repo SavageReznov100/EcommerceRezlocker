@@ -3,7 +3,7 @@ import { ProductContext } from "../Context/ProductContext";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
-
+import Button from "../Components/Button/Button";
 import Tabs from "../Components/Product/Tabs";
 
 const ProductDetails = () => {
@@ -32,9 +32,9 @@ const ProductDetails = () => {
   } = details;
 
   return (
-    <div>
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+    <div className="bg-tetiary">
+      <div className="container py-10">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, height: "0px", width: "0px" }}
             animate={{ opacity: 1, height: "100%", width: "100%" }}
@@ -50,12 +50,12 @@ const ProductDetails = () => {
           </motion.div>
           <div className="flex flex-col gap-5">
             <div>
-              <p className="text-2xl">{brand}</p>
+              <p className="font-manrope text-2xl">{brand}</p>
             </div>
             <div className="flex flex-col gap-3">
-              <p className="text-4xl">{name}</p>
-              <p className="text-2xl">${price}</p>
-              <p>incl. local Tax & Shipping.</p>
+              <p className="font-raleway text-4xl">{name}</p>
+              <p className="font-raleway text-2xl">${price}</p>
+              <p className="font-manrope">incl. local Tax & Shipping.</p>
             </div>
             <div className="flex flex-col gap-3">
               <p className="line-clamp-3">{description}</p>
@@ -63,30 +63,31 @@ const ProductDetails = () => {
               {inStock ? (
                 <p className="text-green-500">In Stock</p>
               ) : (
-                <p className="text-red-500">Not In Stock</p>
+                <p className="text-rose-500">Not In Stock</p>
               )}
             </div>
             {inStock && (
               <div>
                 {!cartItems[_id] ? (
-                  <div>
-                    <button
-                      onClick={() => addToCart(_id)}
-                      className="rounded-full bg-black px-16 py-2 text-white transition-all duration-700 hover:bg-latergator"
-                    >
-                      Add to Cart
-                    </button>
+                  <div onClick={() => addToCart(_id)}>
+                    <Button
+                      Text_Color={"white"}
+                      Font={"raleway"}
+                      Padding_Y={"8px"}
+                      Padding_X={"24px"}
+                      Text={"Add to Cart"}
+                    />
                   </div>
                 ) : (
-                  <div className="flex h-10 items-center gap-2 rounded-full bg-white">
+                  <div className="flex h-10 w-32 items-center justify-between gap-2 rounded-full">
                     <FaMinus
                       onClick={() => removeFromCart(_id)}
-                      className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-white p-1"
+                      className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-red-500 p-1 text-white"
                     />
-                    <p>{cartItems[_id]}</p>
+                    <p className="font-libre">{cartItems[_id]}</p>
                     <FaPlus
                       onClick={() => addToCart(_id)}
-                      className="mr-1 h-6 w-6 cursor-pointer rounded-full bg-latergator p-1"
+                      className="bg-grenn-500 mr-1 h-6 w-6 cursor-pointer rounded-full bg-green-500 p-1 text-white"
                     />
                   </div>
                 )}

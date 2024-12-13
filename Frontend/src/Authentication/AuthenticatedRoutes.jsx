@@ -4,7 +4,6 @@ import { ProductContext } from "../Context/ProductContext";
 import { toast } from "react-toastify";
 const ProtectedRoutes = () => {
   const { token } = useContext(ProductContext);
-
   if (token === null) {
     return <Outlet />;
   } else {
