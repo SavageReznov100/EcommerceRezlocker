@@ -33,7 +33,6 @@ export const newsubscribe = async (req, res) => {
       message: "Subscribed",
     });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Cannot Subscribe" });
   }
 };

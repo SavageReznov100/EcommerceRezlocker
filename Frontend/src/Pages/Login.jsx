@@ -29,20 +29,20 @@ const Login = () => {
   };
   return (
     <>
-      <div className=" h-screen w-screen grid md:grid-cols-2 ">
+      <div className="grid h-screen w-screen md:grid-cols-2">
         <div className="hidden md:block">
           <img
             src="/img/auth/auth1.jpg"
-            className="h-full w-full object-cover "
+            className="h-full w-full object-cover"
             placeholder="blur"
           />
         </div>
 
-        <div className="flex flex-col ml-5 justify-center items-center">
-          <h1 className="mb-7  text-2xl md:text-4xl font-semibold font-serif text-latergator  ">
+        <div className="ml-5 flex flex-col items-center justify-center">
+          <h1 className="mb-7 font-serif text-2xl font-semibold text-latergator md:text-4xl">
             Login to Rezlocker
           </h1>
-          <div className="flex flex-col justify-center text-red-400 ">
+          <div className="flex flex-col justify-center text-red-400">
             {auth.error && <p>{auth.error}</p>}
             {errors.email && <p>Email is required</p>}
             {errors.password && <p>Pasword is required</p>}
@@ -56,7 +56,7 @@ const Login = () => {
               type="text"
               {...register("email", { required: true })}
               placeholder="Email..."
-              className="ring-1 w-72 ring-slate-900/10 py-2 px-3 bg-[#EFF0F2] outline-none "
+              className="w-72 bg-[#EFF0F2] px-3 py-2 outline-none ring-1 ring-slate-900/10"
             ></input>
             <label>Password</label>
             <input
@@ -65,12 +65,12 @@ const Login = () => {
                 required: true,
               })}
               placeholder="Password "
-              className="ring-1 w-72 ring-slate-900/10 py-2 px-3  bg-[#EFF0F2] outline-none "
+              className="w-72 bg-[#EFF0F2] px-3 py-2 outline-none ring-1 ring-slate-900/10"
             ></input>
 
             <button
               type="submit"
-              className="px-7 py-3 bg-latergator text-white l"
+              className="l bg-latergator px-7 py-3 text-white"
             >
               Log In
             </button>

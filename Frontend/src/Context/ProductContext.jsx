@@ -10,6 +10,7 @@ export const ProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [cartItems, setCartItems] = useState([]);
   const [token, setToken] = useState(null);
+  const URL = "http://localhost:4000";
 
   useEffect(() => {
     async function loadData() {
@@ -22,8 +23,6 @@ export const ProductProvider = ({ children }) => {
     loadData();
   }, []);
 
-  console.log("token is ", token);
-
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -32,7 +31,7 @@ export const ProductProvider = ({ children }) => {
     }
     if (token) {
       const response = await axios.post(
-        "http://localhost:4000/api/addcart",
+        `${URL}/api/addcart`,
         { itemId },
         { headers: { token } },
       );
@@ -48,7 +47,7 @@ export const ProductProvider = ({ children }) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (token) {
       const response = await axios.post(
-        "http://localhost:4000/api/deletecart",
+        `${URL}/api/deletecart`,
         { itemId },
         { headers: { token } },
       );
@@ -61,7 +60,7 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getCart = async (token) => {
-    const response = await axios.get("http://localhost:4000/api/getcart", {
+    const response = await axios.get(`${URL}/api/getcart`, {
       headers: { token },
     });
     setCartItems(response.data.cartData);
@@ -77,7 +76,7 @@ export const ProductProvider = ({ children }) => {
         if (itemInfo) {
           totalAmount += itemInfo.price * cartItems[item];
         } else {
-          console.warn(`Item with ID ${item} not found in products.`);
+          // console.warn(`Item with ID ${item} not found in products.`);
         }
       }
     }
@@ -86,9 +85,7 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await axios.get(
-        `http://localhost:4000/api/product/list`,
-      );
+      const response = await axios.get(`${URL}/api/product/list`);
       if (response.data.success) {
         setProducts(response.data.data);
         setLoading(false);
@@ -99,9 +96,7 @@ export const ProductProvider = ({ children }) => {
     fetchProduct();
   }, []);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  useEffect(() => {}, [cartItems]);
   return (
     <ProductContext.Provider
       value={{
@@ -114,6 +109,7 @@ export const ProductProvider = ({ children }) => {
         getTotalCartAmount,
         token,
         setToken,
+        URL,
       }}
     >
       {children}

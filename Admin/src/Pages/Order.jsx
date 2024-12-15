@@ -6,16 +6,16 @@ import { toast } from "react-toastify";
 
 const Order = ({}) => {
   const [orders, setOrders] = useState([]);
+  const URL = "http://localhost:4000";
   const fetchOrders = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/api/listorder");
+      const response = await axios.post(`${URL}/api/listorder`);
       if (response.data.success) {
         setOrders(response.data.data);
       } else {
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.error("Error fetching orders:", error);
       toast.error("Failed to fetch orders.");
     }
   };
@@ -24,7 +24,7 @@ const Order = ({}) => {
   }, []);
   console.log(orders);
   const onChangeHandler = async (event, orderId) => {
-    const response = await axios.post("http://localhost:4000/api/status", {
+    const response = await axios.post(`${URL}/api/status`, {
       orderId,
       status: event.target.value,
     });
@@ -34,7 +34,6 @@ const Order = ({}) => {
     } else {
       toast.error(response.data.message);
     }
-    console.log(event, orderId);
   };
   return (
     <>

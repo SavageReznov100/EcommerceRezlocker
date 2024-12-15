@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import Button from "../Components/Button/Button";
 import Tabs from "../Components/Product/Tabs";
+import Motion from "../Components/Motion/Motion";
 
 const ProductDetails = () => {
   const transition = { duration: 0.6, ease: [0.6, 0.01, 0.05, 0.9] };
@@ -48,52 +49,54 @@ const ProductDetails = () => {
               />
             </div>
           </motion.div>
-          <div className="flex flex-col gap-5">
-            <div>
-              <p className="font-manrope text-2xl">{brand}</p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className="font-raleway text-4xl">{name}</p>
-              <p className="font-raleway text-2xl">${price}</p>
-              <p className="font-manrope">incl. local Tax & Shipping.</p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className="line-clamp-3">{description}</p>
-              <p>Color : {color}</p>
-              {inStock ? (
-                <p className="text-green-500">In Stock</p>
-              ) : (
-                <p className="text-rose-500">Not In Stock</p>
-              )}
-            </div>
-            {inStock && (
+          <Motion direction="left" delay={0.2}>
+            <div className="flex flex-col gap-5">
               <div>
-                {!cartItems[_id] ? (
-                  <div onClick={() => addToCart(_id)}>
-                    <Button
-                      Text_Color={"white"}
-                      Font={"raleway"}
-                      Padding_Y={"8px"}
-                      Padding_X={"24px"}
-                      Text={"Add to Cart"}
-                    />
-                  </div>
+                <p className="font-manrope text-2xl">{brand}</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <p className="font-raleway text-4xl">{name}</p>
+                <p className="font-raleway text-2xl">${price}</p>
+                <p className="font-manrope">incl. local Tax & Shipping.</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <p className="line-clamp-3">{description}</p>
+                <p>Color : {color}</p>
+                {inStock ? (
+                  <p className="text-green-500">In Stock</p>
                 ) : (
-                  <div className="flex h-10 w-32 items-center justify-between gap-2 rounded-full">
-                    <FaMinus
-                      onClick={() => removeFromCart(_id)}
-                      className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-red-500 p-1 text-white"
-                    />
-                    <p className="font-libre">{cartItems[_id]}</p>
-                    <FaPlus
-                      onClick={() => addToCart(_id)}
-                      className="bg-grenn-500 mr-1 h-6 w-6 cursor-pointer rounded-full bg-green-500 p-1 text-white"
-                    />
-                  </div>
+                  <p className="text-rose-500">Not In Stock</p>
                 )}
               </div>
-            )}
-          </div>
+              {inStock && (
+                <div>
+                  {!cartItems[_id] ? (
+                    <div onClick={() => addToCart(_id)}>
+                      <Button
+                        Text_Color={"white"}
+                        Font={"raleway"}
+                        Padding_Y={"8px"}
+                        Padding_X={"24px"}
+                        Text={"Add to Cart"}
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-10 w-32 items-center justify-between gap-2 rounded-full">
+                      <FaMinus
+                        onClick={() => removeFromCart(_id)}
+                        className="ml-1 h-6 w-6 cursor-pointer rounded-full bg-red-500 p-1 text-white"
+                      />
+                      <p className="font-libre">{cartItems[_id]}</p>
+                      <FaPlus
+                        onClick={() => addToCart(_id)}
+                        className="bg-grenn-500 mr-1 h-6 w-6 cursor-pointer rounded-full bg-green-500 p-1 text-white"
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </Motion>
         </div>
         <div className="my-4">
           <Tabs features={features} description={description} />

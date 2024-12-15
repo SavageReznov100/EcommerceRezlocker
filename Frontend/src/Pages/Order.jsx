@@ -11,8 +11,9 @@ const Order = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { cartItems, products, token, getTotalCartAmount } =
+  const { cartItems, products, token, getTotalCartAmount, URL } =
     useContext(ProductContext);
+
   const navigate = useNavigate();
   const placeOrder = async (data) => {
     const { name, email, number, address, zipcode, city, country } = data;
@@ -34,11 +35,9 @@ const Order = () => {
       items: orderItems,
       amount: getTotalCartAmount() + 2,
     };
-    let response = await axios.post(
-      "http://localhost:4000/api/placeorder",
-      orderData,
-      { headers: { token } },
-    );
+    let response = await axios.post(`${URL}/api/placehorder`, orderData, {
+      headers: { token },
+    });
     if (response.data.success) {
       const { session_url } = response.data;
       window.location.replace(session_url);
@@ -46,13 +45,7 @@ const Order = () => {
       alert("Error");
     }
   };
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/signup");
-  //   } else if (getTotalCartAmount() === 0) {
-  //     navigate("/cart");
-  //   }
-  // });
+
   return (
     <>
       <div className="min-h-screen bg-background">

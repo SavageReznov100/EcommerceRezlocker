@@ -7,9 +7,10 @@ const Verify = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
+  const URL = "http://localhost:4000";
 
   const verifyPayment = async () => {
-    let response = await axios.post("http://localhost:4000/api/verify", {
+    let response = await axios.post(`${URL}/api/verify`, {
       success,
       orderId,
     });
@@ -26,8 +27,8 @@ const Verify = () => {
   }, [orderId, success]);
   return (
     <section>
-      <div className="min-h-[60vh] grid">
-        <div className="w-24 h-24 place-self-center border-4 border-t-latergator rounded-full animate-spin" />
+      <div className="grid min-h-[60vh]">
+        <div className="h-24 w-24 animate-spin place-self-center rounded-full border-4 border-t-primary" />
       </div>
     </section>
   );

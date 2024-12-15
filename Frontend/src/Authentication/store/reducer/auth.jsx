@@ -5,15 +5,14 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+const URL = "http://localhost:4000";
+
 export const signup = createAsyncThunk(
   "auth/signup",
   async (body, thunkAPI) => {
     console.log("Sending data to backend:", body);
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/signup",
-        body
-      );
+      const response = await axios.post(`${URL}/api/signup`, body);
       if (response.data.success) {
         return response.data.tokens;
       } else {
@@ -22,15 +21,15 @@ export const signup = createAsyncThunk(
     } catch (error) {
       console.error("Error during signup:", error);
       return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "Signup failed"
+        error.response?.data?.message || "Signup failed",
       );
     }
-  }
+  },
 );
 export const login = createAsyncThunk("auth/login", async (body, thunkAPI) => {
   console.log("Sending data to backend:", body);
   try {
-    const response = await axios.post("http://localhost:4000/api/login", body);
+    const response = await axios.post(`${URL}/api/login`, body);
     if (response.data.success) {
       return response.data.tokens;
     } else {
@@ -39,7 +38,7 @@ export const login = createAsyncThunk("auth/login", async (body, thunkAPI) => {
   } catch (error) {
     console.error("Error during login:", error);
     return thunkAPI.rejectWithValue(
-      error.response?.data?.message || "Login  failed"
+      error.response?.data?.message || "Login  failed",
     );
   }
 });
@@ -56,7 +55,7 @@ export const getCurrentUser = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.error);
     }
-  }
+  },
 );
 export const logout = createAsyncThunk("auth/logout", async () => {
   localStorage.removeItem("token");

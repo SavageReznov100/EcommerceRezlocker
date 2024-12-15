@@ -16,7 +16,6 @@ const SignUp = () => {
   } = useForm();
   const dispatch = useDispatch();
   const onSubmit = (data) => {
-    console.log(data);
     const { email, password, fullname } = data;
     dispatch(signup({ email, password, fullname })).then((action) => {
       if (signup.fulfilled.match(action)) {
@@ -28,19 +27,19 @@ const SignUp = () => {
   };
   return (
     <>
-      <div className=" h-screen w-screen grid md:grid-cols-2 ">
+      <div className="grid h-screen w-screen md:grid-cols-2">
         <div className="hidden md:block">
           <img
             src="/img/auth/auth1.jpg"
-            className="h-full w-full object-cover "
+            className="h-full w-full object-cover"
             placeholder="blur"
           />
         </div>
-        <div className="flex flex-col ml-5 justify-center items-center">
-          <h1 className="mb-7  text-2xl md:text-4xl font-semibold font-serif text-latergator  ">
+        <div className="ml-5 flex flex-col items-center justify-center">
+          <h1 className="mb-7 font-serif text-2xl font-semibold text-primary md:text-4xl">
             Welcome to Rezlocker
           </h1>
-          <div className="flex flex-col justify-center text-red-400 gap-2">
+          <div className="flex flex-col justify-center gap-2 text-red-400">
             {auth.error && <p>{auth.error}</p>}
             {errors.email && <p>Email is not valid</p>}
             {errors.password && <p>Pasword is not Strong Enough</p>}
@@ -54,7 +53,7 @@ const SignUp = () => {
               type="text"
               {...register("fullname", { required: true })}
               placeholder="Full Name..."
-              className="ring-1 w-72 ring-slate-900/10 py-2 px-3 bg-[#EFF0F2] outline-none "
+              className="w-72 bg-[#EFF0F2] px-3 py-2 outline-none ring-1 ring-slate-900/10"
             />
 
             <label>Email</label>
@@ -62,7 +61,7 @@ const SignUp = () => {
               type="text"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
               placeholder="Email..."
-              className="ring-1 w-72 ring-slate-900/10 py-2 px-3 bg-[#EFF0F2] outline-none "
+              className="w-72 bg-[#EFF0F2] px-3 py-2 outline-none ring-1 ring-slate-900/10"
             ></input>
 
             <label>Password</label>
@@ -73,19 +72,16 @@ const SignUp = () => {
                 pattern: /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
               })}
               placeholder="Password "
-              className="ring-1 w-72 ring-slate-900/10 py-2 px-3 bg-[#EFF0F2] outline-none "
+              className="w-72 bg-[#EFF0F2] px-3 py-2 outline-none ring-1 ring-slate-900/10"
             ></input>
 
-            <button
-              type="submit"
-              className="px-10 py-2 bg-latergator text-white  "
-            >
+            <button type="submit" className="bg-primary px-10 py-2 text-white">
               Create Account
             </button>
 
             <p>
               Already have an account ?
-              <span className="text-latergator">
+              <span className="text-primary">
                 <Link to="/login"> Log in</Link>
               </span>
             </p>

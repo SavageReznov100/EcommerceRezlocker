@@ -19,7 +19,7 @@ const Cart = () => {
         <h1 className="flex items-center justify-center py-10 pt-8 font-raleway text-4xl uppercase tracking-widest text-white">
           CART
         </h1>
-        <div className="grid w-full grid-cols-1 bg-tetiary md:grid-cols-3">
+        <div className="grid min-h-[50vh] w-full grid-cols-1 bg-tetiary md:grid-cols-3">
           <div className="col-span-2 w-full bg-secondary">
             {products.map((product) => {
               if (cartItems[product._id] > 0) {
@@ -57,17 +57,19 @@ const Cart = () => {
                         </div>
                       </div>
                     </div>
-                    <hr class="border border-black" />
+                    <hr class="border border-tetiary" />
                   </>
                 );
               }
             })}
-            <p className="ml-10 py-6 font-playfair text-2xl text-white md:text-4xl">
-              Does your cart feel empty ?
-              <Link to="/product">
-                <span className="text-primary"> Shop More</span>
-              </Link>
-            </p>
+            {getTotalCartAmount() <= 0 && (
+              <p className="ml-10 py-6 font-playfair text-2xl text-white md:text-4xl">
+                Does your cart feel empty ?
+                <Link to="/product">
+                  <span className="text-primary"> Shop More</span>
+                </Link>
+              </p>
+            )}
           </div>
           <div className="h-60 min-h-[300px] px-10 py-5 font-lora text-xl">
             <h1 className="text-3xl">Summary</h1>

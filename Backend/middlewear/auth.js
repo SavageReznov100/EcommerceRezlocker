@@ -7,7 +7,6 @@ export const authMiddlewear = async (req, res, next) => {
     req.body.id = token_decode._id;
     next();
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Error2" });
   }
 };

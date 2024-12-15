@@ -11,10 +11,10 @@ const ListCart = ({ theme, setTheme }) => {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
   const [search, setSearch] = useState("");
+  const URL = "http://localhost:4000";
 
   const fetchList = async () => {
-    const response = await axios.get(`http://localhost:4000/api/product/list`);
-    console.log(response.data);
+    const response = await axios.get(`${URL}/api/product/list`);
     if (response.data.success) {
       setList(response.data.data);
     } else {
@@ -24,10 +24,9 @@ const ListCart = ({ theme, setTheme }) => {
 
   const removeProduct = async (productId) => {
     setIsLoading(true);
-    const response = await axios.post(
-      `http://localhost:4000/api/product/remove`,
-      { id: productId },
-    );
+    const response = await axios.post(`${URL}/api/product/remove`, {
+      id: productId,
+    });
     await fetchList();
     if (response.data.succes) {
       toast.success(response.data.message);
@@ -45,7 +44,7 @@ const ListCart = ({ theme, setTheme }) => {
   return (
     <>
       <div className="flex w-full flex-col bg-background">
-        <Navbar theme={theme} setTheme={setTheme} />
+        <Navbar />
         <div className="my-8 flex items-center justify-center">
           <label className="relative block">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">

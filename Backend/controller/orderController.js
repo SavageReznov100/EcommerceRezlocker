@@ -49,7 +49,6 @@ export const placeOrder = async (req, res) => {
     });
     res.json({ success: true, session_url: session.url });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Error" });
   }
 };
@@ -65,7 +64,6 @@ export const verifyOrder = async (req, res) => {
       res.json({ success: false, message: "Payment Unsuccesful" });
     }
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Error" });
   }
 };
@@ -75,7 +73,6 @@ export const userOrders = async (req, res) => {
     const orders = await orderModel.find({ userId: req.body.id });
     res.json({ success: true, data: orders });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Error" });
   }
 };
@@ -85,7 +82,6 @@ export const listOrders = async (req, res) => {
     const orders = await orderModel.find({});
     res.json({ success: true, data: orders });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Error" });
   }
 };
@@ -98,7 +94,6 @@ export const updateSatus = async (req, res) => {
     );
     res.json({ success: true, message: "Status Updated" });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Can Not Update Status" });
   }
 };

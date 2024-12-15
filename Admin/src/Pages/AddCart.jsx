@@ -9,7 +9,7 @@ import classNames from "classnames";
 import AttachFileIcon from "../Icons/AttachFileIcon";
 
 const AddCart = () => {
-  const url = "http://localhost:4000";
+  const URL = "http://localhost:4000";
   const [isSelected, setIsSelected] = useState(false);
   const [isNewCollection, setIsNewCollection] = useState(false);
   const [image, setImage] = useState("null");
@@ -27,7 +27,6 @@ const AddCart = () => {
     inStock: false,
     newCollection: false,
   });
-  console.log(data);
   const onChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -75,15 +74,11 @@ const AddCart = () => {
     formData.append("inStock", Boolean(data.inStock));
     formData.append("newCollection", Boolean(data.newCollection));
 
-    const response = await axios.post(
-      `http://localhost:4000/api/product/add`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+    const response = await axios.post(`${URL}/api/product/add`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
       },
-    );
+    });
     if (response.data.success) {
       setData({
         name: "",

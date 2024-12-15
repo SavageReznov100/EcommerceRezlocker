@@ -6,10 +6,12 @@ import { toast } from "react-toastify";
 const UserOrders = () => {
   const [orders, setOrders] = useState([]);
   const { token } = useContext(ProductContext);
+  const URL = "http://localhost:4000";
+
   const fetchOrders = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/order",
+        `${URL}/api/order`,
         {},
         {
           headers: { token },
@@ -30,7 +32,6 @@ const UserOrders = () => {
       fetchOrders();
     }
   }, [token]);
-  console.log(orders);
 
   return (
     <section className="bg-background py-10">
@@ -95,7 +96,7 @@ const UserOrders = () => {
                   <td className="border-2 border-tetiary p-1 text-center font-lora text-white">
                     <button
                       onClick={fetchOrders}
-                      className="rounded-sm bg-latergator px-5 py-2"
+                      className="rounded-sm bg-primary px-5 py-2"
                     >
                       Track <span className="hidden lg:flex">Order</span>
                     </button>

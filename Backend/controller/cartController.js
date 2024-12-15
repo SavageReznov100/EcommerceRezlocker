@@ -40,7 +40,6 @@ export const deleteCart = async (req, res) => {
     await userModel.findByIdAndUpdate(req.body.id, { cartData });
     res.json({ success: true, message: "Removed from cart" });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Not Removed from Cart" });
   }
 };
@@ -55,7 +54,6 @@ export const getCart = async (req, res) => {
       return res.json({ success: true, cartData: userData.cartData });
     }
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: "Can Not Get Cart Data" });
   }
 };
