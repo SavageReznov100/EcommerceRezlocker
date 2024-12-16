@@ -22,7 +22,7 @@ app.use("/api", orderRoute);
 app.use("/api", newsRoute);
 
 mongoose.connect(process.env.MONGODB_DB_CONNECTION_STRING).then(() => {
-  app.listen(process.env.port, () => {
+  app.listen(process.env.P0RT, () => {
     console.log(
       "connected to the database and listening on port",
       process.env.PORT
