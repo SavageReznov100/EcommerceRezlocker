@@ -1,5 +1,6 @@
-dotenv.config();
+
 import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -22,7 +23,7 @@ app.use("/api", orderRoute);
 app.use("/api", newsRoute);
 
 mongoose.connect(process.env.MONGODB_DB_CONNECTION_STRING).then(() => {
-  app.listen(process.env.P0RT, () => {
+  app.listen(process.env.PORT, () => {
     console.log(
       "connected to the database and listening on port",
       process.env.PORT
