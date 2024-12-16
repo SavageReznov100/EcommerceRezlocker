@@ -7,7 +7,7 @@ const Verify = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
-  const URL = "http://localhost:4000";
+  const URL = "https://ecommercerezlocker.onrender.com";
 
   const verifyPayment = async () => {
     let response = await axios.post(`${URL}/api/verify`, {
