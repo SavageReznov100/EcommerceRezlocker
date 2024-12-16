@@ -11,7 +11,7 @@ const ListCart = ({ theme, setTheme }) => {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
   const [search, setSearch] = useState("");
-  const URL = "http://localhost:4000";
+  const URL = "https://ecommercerezlocker.onrender.com";
 
   const fetchList = async () => {
     const response = await axios.get(`${URL}/api/product/list`);

@@ -9,7 +9,7 @@ import classNames from "classnames";
 import AttachFileIcon from "../Icons/AttachFileIcon";
 
 const AddCart = () => {
-  const URL = "http://localhost:4000";
+  const URL = "https://ecommercerezlocker.onrender.com";
   const [isSelected, setIsSelected] = useState(false);
   const [isNewCollection, setIsNewCollection] = useState(false);
   const [image, setImage] = useState("null");
