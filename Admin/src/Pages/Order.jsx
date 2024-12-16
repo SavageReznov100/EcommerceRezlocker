@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Order = ({}) => {
   const [orders, setOrders] = useState([]);
-  const URL = "http://localhost:4000";
+  const URL = "https://ecommercerezlocker.onrender.com";
   const fetchOrders = async () => {
     try {
       const response = await axios.post(`${URL}/api/listorder`);
