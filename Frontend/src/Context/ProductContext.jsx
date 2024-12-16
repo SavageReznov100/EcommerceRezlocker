@@ -10,7 +10,7 @@ export const ProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [cartItems, setCartItems] = useState([]);
   const [token, setToken] = useState(null);
-  const URL = "http://localhost:4000";
+  const URL = "https://ecommercerezlocker.onrender.com";
 
   useEffect(() => {
     async function loadData() {
