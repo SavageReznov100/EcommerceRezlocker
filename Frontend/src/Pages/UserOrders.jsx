@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const UserOrders = () => {
   const [orders, setOrders] = useState([]);
   const { token } = useContext(ProductContext);
-  const URL = "http://localhost:4000";
+  const URL = "https://ecommercerezlocker.onrender.com";
 
   const fetchOrders = async () => {
     try {
