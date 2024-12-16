@@ -3,11 +3,11 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import productRoute from "../routes/productRoute.js";
-import userRoute from "../routes/userRoute.js";
-import cartRoute from "../routes/cartRoute.js";
-import orderRoute from "../routes/orderRoute.js";
-import newsRoute from "../routes/newsRoute.js";
+import productRoute from "./routes/productRoute.js";
+import userRoute from "./routes/userRoute.js";
+import cartRoute from "./routes/cartRoute.js";
+import orderRoute from "./routes/orderRoute.js";
+import newsRoute from "./routes/newsRoute.js";
 import { v2 as cloudinary } from "cloudinary";
 
 const app = express();
