@@ -1,5 +1,5 @@
 import userModel from "../models/user.js";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs"
 import validator from "validator";
 import jwt from "jsonwebtoken";
 
@@ -54,8 +54,8 @@ export const signupUser = async (req, res) => {
       return res.json({ success: false, message: "Email Exist" });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const salt = await bcryptjs.genSalt(10);
+    const hashedPassword = await bcryptjs.hash(password, salt);
     const newUser = new userModel({
       fullname: fullname,
       email: email,
