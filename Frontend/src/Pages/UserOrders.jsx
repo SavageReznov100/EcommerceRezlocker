@@ -34,7 +34,7 @@ const UserOrders = () => {
   }, [token]);
 
   return (
-    <section className="bg-background py-10">
+    <section className="bg-background py-10 min-h-[50vh]">
       <div className="container">
         <h1 className="flex items-center justify-center font-playfair text-4xl uppercase tracking-widest text-white">
           My Orders
