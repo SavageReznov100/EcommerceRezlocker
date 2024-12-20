@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
   error: null,
 };
-const URL = "http://localhost:4000";
+const URL = "https://ecommercerezlocker.onrender.com";
 
 export const signup = createAsyncThunk(
   "auth/signup",
