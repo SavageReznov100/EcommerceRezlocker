@@ -6,7 +6,6 @@ import { IoMdAdd } from "react-icons/io";
 import { BiChevronLeft } from "react-icons/bi";
 import { GiWatch } from "react-icons/gi";
 import { FaList, FaBorderAll } from "react-icons/fa";
-import Logo from "../assets/logo.png";
 
 const Sidebar = () => {
   const sidebar = [
@@ -19,7 +18,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="sticky left-0 top-0">
+      <div className="sticky left-0 top-0 hidden md:block">
         <div
           className={`${
             toggle ? "w-16" : "w-44"
@@ -38,11 +37,9 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="flex justify-center">
-            <img className="h-20 w-20" src={Logo} />
-          </div>
+        
           <div>
-            <div className="flex flex-col gap-y-4 pt-10">
+            <div className="flex flex-col gap-y-4 pt-20">
               {sidebar.map((sidebar) => (
                 <NavLink key={sidebar.id} to={sidebar.link}>
                   <div

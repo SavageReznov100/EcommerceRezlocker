@@ -13,12 +13,6 @@ import Motion from "../Motion/Motion";
 const Navbar = ({ activeTab, setActiveTab }) => {
   const { getTotalCartAmount } = useContext(ProductContext);
 
-  const mobile = [
-    { id: 1, name: "Sign in", link: "/" },
-    { id: 2, name: "Home", link: "/" },
-    { id: 3, name: "New Collection", link: "/newcollection" },
-    { id: 4, name: "Product", link: "/product" },
-  ];
   const navbar = [
     { id: 1, name: "Home", link: "/" },
     { id: 2, name: "New Collection", link: "/newcollection" },

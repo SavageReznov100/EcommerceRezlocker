@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import Navbar from "../Components/Navbar";
 import Upload from "../assets/uploadfield.svg";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
@@ -108,9 +107,7 @@ const AddCart = () => {
   return (
     <>
       <div className="flex w-full flex-col bg-background">
-        <div>
-          <Navbar />
-        </div>
+       
         <div className="w-full py-10 pl-2 md:pl-10">
           <form onSubmit={onSubmitHandler} className="flex flex-col gap-y-5">
             <h1 className="header">Product Information</h1>

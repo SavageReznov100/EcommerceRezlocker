@@ -82,7 +82,7 @@ const StaggeredDropDown = ({ toggleMenu, isMenuOpen }) => {
           <div className="relative">
             <div className="absolute right-8 top-6">
               <IoClose
-                className="text-white hover:text-latergator"
+                className="text-white hover:text-primary"
                 size={32}
                 onClick={toggleMenu}
               />

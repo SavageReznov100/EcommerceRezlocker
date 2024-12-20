@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Components/Navbar";
 import axios from "axios";
 import { FaBox } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -37,8 +36,7 @@ const Order = ({}) => {
   };
   return (
     <>
-      <div className="flex w-full flex-col bg-background">
-        <Navbar />
+      <div className="flex w-full flex-col min-h-screen bg-background">
         <h4 className="header flex justify-center">Order Page</h4>
         <div className="mt-5 overflow-auto">
           <table className="w-full">

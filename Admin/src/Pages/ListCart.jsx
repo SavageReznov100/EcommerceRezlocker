@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -43,8 +42,7 @@ const ListCart = ({ theme, setTheme }) => {
 
   return (
     <>
-      <div className="flex w-full flex-col bg-background">
-        <Navbar />
+      <div className="flex w-full min-h-screen flex-col bg-background">
         <div className="my-8 flex items-center justify-center">
           <label className="relative block">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">

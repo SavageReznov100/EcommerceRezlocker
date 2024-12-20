@@ -97,7 +97,7 @@ export const loginUser = async (req, res) => {
         message: "Sorry, we don't recognize this email.",
       });
     }
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcryptjs.compare(password, user.password);
     if (!match) {
       return res.json({ success: false, message: "Invalid Password" });
     }
