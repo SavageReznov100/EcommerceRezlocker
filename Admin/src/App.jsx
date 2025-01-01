@@ -1,4 +1,4 @@
-import { React,useState } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,34 +8,50 @@ import ListCart from "./Pages/ListCart";
 import Order from "./Pages/Order";
 import Navbar from "./Components/Navbar";
 import { AnimatePresence } from "framer-motion";
+import Menubar from "./Components/Menubar";
 
 function App() {
-   const [MenuOpen, setMenuOpen] = useState(false);
-  console.log(MenuOpen)
-   const toggleMenu = () => {
-   setMenuOpen(!MenuOpen);
- };
+  let menuRef = useRef();
+  const [MenuOpen, setMenuOpen] = useState(false);
+  console.log(MenuOpen);
+  const toggleMenu = () => {
+    setMenuOpen(!MenuOpen);
+  };
+  useEffect(() => {
+    let handler = (e) => {
+      console.log("Handler called");
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        console.log("Clicked outside menu");
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    console.log("Event listener added");
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      console.log("Event listener removed");
+    };
+  }, []);
   return (
     <>
-    <AnimatePresence mode="wait">
-      <BrowserRouter>
-        <ToastContainer />
-        <div className="flex">
-          <Sidebar />
-          <div className="flex flex-col w-full">   
-            <Navbar  toggleMenu={toggleMenu} MenuOpen={MenuOpen}/>
-            <Routes>
-            <Route path="/" element={<AddCart />} />
-            <Route path="/list" element={<ListCart />} />
-            <Route path="/order" element={<Order />} />
-          </Routes>
+      <AnimatePresence mode="wait">
+        <BrowserRouter>
+          <ToastContainer />
+          <div className="flex">
+            <Sidebar />
+            <div className="flex w-full flex-col">
+              <Menubar ref={menuRef} toggleMenu={toggleMenu} MenuOpen={MenuOpen} />
+              <Navbar setMenuOpen={setMenuOpen} toggleMenu={toggleMenu} />
+              <Routes>
+                <Route path="/" element={<AddCart />} />
+                <Route path="/list" element={<ListCart />} />
+                <Route path="/order" element={<Order />} />
+              </Routes>
+            </div>
           </div>
-    
-      
-        </div>
-      </BrowserRouter>
-    </AnimatePresence>
-      
+        </BrowserRouter>
+      </AnimatePresence>
     </>
   );
 }

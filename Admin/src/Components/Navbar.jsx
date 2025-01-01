@@ -1,12 +1,9 @@
 import React from "react";
 import UserIcon from "../Icons/UserIcon";
 import { RxHamburgerMenu } from "react-icons/rx";
-import Menubar from "./Menubar";
-
-const Navbar = ({toggleMenu,MenuOpen}) => {
+const Navbar = ({ toggleMenu }) => {
   return (
     <>
-      <Menubar MenuOpen={MenuOpen} toggleMenu={toggleMenu}/>
       <div className="flex h-20 w-full items-center justify-end bg-background px-10">
         <div className="flex items-center justify-center gap-7 text-white">
           <UserIcon />

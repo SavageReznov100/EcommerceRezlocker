@@ -1,11 +1,10 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Upload from "../assets/uploadfield.svg";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LoadingWhite from "../assets/loadingwhite.svg";
+import LoadingBlack from "../assets/loadingblack.svg";
 import classNames from "classnames";
-import AttachFileIcon from "../Icons/AttachFileIcon";
 
 const AddCart = () => {
   const URL = "https://ecommercerezlocker.onrender.com";
@@ -26,6 +25,7 @@ const AddCart = () => {
     inStock: false,
     newCollection: false,
   });
+  console.log(data);
   const onChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -96,6 +96,7 @@ const AddCart = () => {
       setImageUrl(Upload);
       toast.success(response.data.message);
     } else {
+      console.error("Submission failed");
       toast.error(response.data.message);
       setIsLoading(false);
     }
@@ -104,10 +105,10 @@ const AddCart = () => {
       console.log("Error in Submitting Form", error);
     }
   };
+
   return (
     <>
       <div className="flex w-full flex-col bg-background">
-       
         <div className="w-full py-10 pl-2 md:pl-10">
           <form onSubmit={onSubmitHandler} className="flex flex-col gap-y-5">
             <h1 className="header">Product Information</h1>
@@ -213,7 +214,7 @@ const AddCart = () => {
             <div className="w-40">
               <p className="subheader">Product Image</p>
               <label htmlFor="imageFile">
-                <AttachFileIcon />
+                <img src={imageUrl} alt="" className="h-20" />
               </label>
               <input
                 onChange={onImageChange}
@@ -259,7 +260,7 @@ const AddCart = () => {
               >
                 {isLoading ? (
                   <div className="flex items-center gap-x-3">
-                    <img src={LoadingWhite} className="h-6 w-6" />
+                    <img src={LoadingBlack} className="h-6 w-6" />
 
                     <p className="font-playfair text-white">Processing...</p>
                   </div>

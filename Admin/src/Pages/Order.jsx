@@ -21,7 +21,6 @@ const Order = ({}) => {
   useEffect(() => {
     fetchOrders();
   }, []);
-  console.log(orders);
   const onChangeHandler = async (event, orderId) => {
     const response = await axios.post(`${URL}/api/status`, {
       orderId,
