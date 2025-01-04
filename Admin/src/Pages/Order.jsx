@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaBox } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Statistics from "../Components/Statistics";
+import Chartdata from "../Components/Chartdata";
+import Income from "../Components/Income";
 
 const Order = ({}) => {
   const [orders, setOrders] = useState([]);
@@ -35,8 +38,18 @@ const Order = ({}) => {
   };
   return (
     <>
-      <div className="flex w-full flex-col min-h-screen bg-background">
+      <div className="flex min-h-screen w-full flex-col bg-background">
         <h4 className="header flex justify-center">Order Page</h4>
+        <div className="flex w-full flex-col items-center justify-evenly gap-5 py-5 md:flex-row">
+          <div className="flex flex-col gap-5">
+            <Statistics orders={orders} />
+            <Income orders={orders} />
+          </div>
+          <div>
+            <Chartdata orders={orders} />
+          </div>
+        </div>
+
         <div className="mt-5 overflow-auto">
           <table className="w-full">
             <thead>

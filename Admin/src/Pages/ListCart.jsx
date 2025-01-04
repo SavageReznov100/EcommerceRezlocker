@@ -42,7 +42,7 @@ const ListCart = ({ theme, setTheme }) => {
 
   return (
     <>
-      <div className="flex w-full min-h-screen flex-col bg-background">
+      <div className="flex min-h-screen w-full flex-col bg-background">
         <div className="my-8 flex items-center justify-center">
           <label className="relative block">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -72,9 +72,9 @@ const ListCart = ({ theme, setTheme }) => {
                 return updateproducts;
               }
             })
-            .map((updateproducts) => (
+            .map((updateproducts, index) => (
               <div
-                key={updateproducts.id}
+                key={index}
                 className="h-[300px] w-[175px] rounded-md bg-secondary"
               >
                 <div className="relative h-[175px] w-full bg-tetiary">

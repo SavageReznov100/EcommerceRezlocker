@@ -13,24 +13,19 @@ import Menubar from "./Components/Menubar";
 function App() {
   let menuRef = useRef();
   const [MenuOpen, setMenuOpen] = useState(false);
-  console.log(MenuOpen);
   const toggleMenu = () => {
     setMenuOpen(!MenuOpen);
   };
   useEffect(() => {
     let handler = (e) => {
-      console.log("Handler called");
       if (menuRef.current && !menuRef.current.contains(e.target)) {
-        console.log("Clicked outside menu");
         setMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
-    console.log("Event listener added");
 
     return () => {
       document.removeEventListener("mousedown", handler);
-      console.log("Event listener removed");
     };
   }, []);
   return (
@@ -41,7 +36,11 @@ function App() {
           <div className="flex">
             <Sidebar />
             <div className="flex w-full flex-col">
-              <Menubar ref={menuRef} toggleMenu={toggleMenu} MenuOpen={MenuOpen} />
+              <Menubar
+                ref={menuRef}
+                toggleMenu={toggleMenu}
+                MenuOpen={MenuOpen}
+              />
               <Navbar setMenuOpen={setMenuOpen} toggleMenu={toggleMenu} />
               <Routes>
                 <Route path="/" element={<AddCart />} />

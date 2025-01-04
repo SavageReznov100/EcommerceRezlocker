@@ -25,7 +25,6 @@ const AddCart = () => {
     inStock: false,
     newCollection: false,
   });
-  console.log(data);
   const onChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -109,7 +108,7 @@ const AddCart = () => {
   return (
     <>
       <div className="flex w-full flex-col bg-background">
-        <div className="w-full py-10 pl-2 md:pl-10">
+        <div className="w-full py-10 pl-10">
           <form onSubmit={onSubmitHandler} className="flex flex-col gap-y-5">
             <h1 className="header">Product Information</h1>
             <div>

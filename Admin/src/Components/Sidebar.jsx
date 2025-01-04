@@ -24,7 +24,7 @@ const Sidebar = () => {
             toggle ? "w-16" : "w-44"
           } relative h-full min-h-screen border-r-2 border-solid border-tetiary bg-background pr-4 pt-4 transition-all duration-500`}
         >
-          <div className="hidden lg:block">
+          <div className="hidden md:block">
             <div
               className="absolute -right-5 top-7 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary"
               onClick={() => setToggle(!toggle)}
@@ -37,7 +37,6 @@ const Sidebar = () => {
             </div>
           </div>
 
-        
           <div>
             <div className="flex flex-col gap-y-4 pt-20">
               {sidebar.map((sidebar) => (
