@@ -33,7 +33,7 @@ const Chartdata = ({ orders }) => {
               labels: {
                 color: "#e0e0e0",
                 font: {
-                  size: 10,
+                  size: 12,
                   family: "Manrope",
                 },
               },
